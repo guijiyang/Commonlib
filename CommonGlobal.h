@@ -2,17 +2,17 @@
 #define COMMONLIB_COMMONGLOBAL_H
 
 //inspired by Qt
-// #ifdef _WIN32
+#ifdef _WIN32
 
-// #ifdef COMMON_LIB
-// # define COMMON_EXPORT __declspec(dllexport)
-// #else
-// # define COMMON_EXPORT __declspec(dllimport)
-// #endif
+#ifdef COMMON_LIB
+# define COMMON_EXPORT __declspec(dllexport)
+#else
+# define COMMON_EXPORT __declspec(dllimport)
+#endif
 
-// #else
+#else
 # define COMMON_EXPORT
-// #endif // _WIN32
+#endif // _WIN32
 
 #define CL_DISABLE_COPY(Class) \
     Class(const Class &); \
