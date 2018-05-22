@@ -3,11 +3,13 @@
 
 #include "Commonlib/CommonGlobal.h"
 
-namespace Commonlib {
+namespace Commonlib
+{
 class CThreadPrivate;
 
 //线程
-class COMMON_EXPORT CThread {
+class COMMON_EXPORT CThread
+{
 public:
   //启动线程，单位毫秒
   bool StartThread(unsigned int uWaitTime);
@@ -43,6 +45,6 @@ private:
   CL_DECLARE_PRIVATE(CThread);
   CThreadPrivate *d_ptr;
 };
-} // namespace CommonLib
+} // namespace Commonlib
 
 #endif // COMMONLIB_THREAD_H
