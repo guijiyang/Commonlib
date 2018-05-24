@@ -6,7 +6,7 @@ namespace Commonlib
 {
     CLog::CLog()
     {
-        log4cxx::PropertyConfigurator::configureAndWatch("Server.log4cxx.properties");
+        log4cxx::PropertyConfigurator::configureAndWatch("Common.log4cxx.properties");
     }
 
     CLog::~CLog()
