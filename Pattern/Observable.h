@@ -1,8 +1,8 @@
 #ifndef COMMONLIB_OBSERVABLE_H
 #define COMMONLIB_OBSERVABLE_H
 
-#include "Commonlib/Thread/Mutex.h"
-#include "Commonlib/CommonGlobal.h"
+#include "Thread/Mutex.h"
+#include "CommonGlobal.h"
 
 #include <list>
 

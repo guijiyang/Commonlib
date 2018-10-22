@@ -4,8 +4,8 @@
 #include <condition_variable>
 #include <deque>
 
-#include "Commonlib/Noncopyable.h"
-#include "Commonlib/Thread/Mutex.h"
+#include "Noncopyable.h"
+#include "Thread/Mutex.h"
 
 namespace Commonlib {
 template <class T> class CBlockingQueue : private CNoncopyable {

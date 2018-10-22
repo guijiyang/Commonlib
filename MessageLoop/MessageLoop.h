@@ -1,8 +1,8 @@
 #ifndef COMMONLIB_MESSAGELOOP_H
 #define COMMONLIB_MESSAGELOOP_H
 
-#include "Commonlib/CommonGlobal.h"
-#include "Commonlib/Pattern/CSingleton.h"
+#include "CommonGlobal.h"
+#include "Pattern/CSingleton.h"
 
 namespace Commonlib
 {

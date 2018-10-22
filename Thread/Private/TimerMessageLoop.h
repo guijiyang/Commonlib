@@ -1,7 +1,7 @@
 #ifndef COMMONLIB_TIMERMESSAGELOOP_H
 #define COMMONLIB_TIMERMESSAGELOOP_H
 
-#include "Commonlib/CommonGlobal.h"
+#include "CommonGlobal.h"
 
 namespace Commonlib
 {

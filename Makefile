@@ -1,27 +1,44 @@
 ##Commonlib库编译脚本
+CC = /usr/bin/gcc
+CXX = /usr/bin/g++
 
-objects = Task.o MessageLoop.o TimerMessageLoop.o Thread.o ThreadPool.o Log.o
-Commonlib = ../
-#objects := $(wildcard*.o) 
-Commonlib.so : $(objects)
-	@g++ -shared -fPIC -lpthread -L/usr/local/log4cxx/lib -llog4cxx $(objects) -o Commonlib.so
+#目标
+TARGET = Commonlib.so
+#路径变量
+#项目路径
+D_PATH = ./
+#对象路径，放置生成的.o文件
+D_OBJ = obj
+VPATH = .:MessageLoop:Log:Thread:Thread/Private
+SRCS = $(foreach dir, $(subst :, , $(VPATH)), $(wildcard $(dir)/*.cpp))
+OBJ_PATH = $(addprefix $(D_OBJ)/, $(subst :, , $(VPATH)))
+OBJS = $(addprefix $(D_OBJ)/, $(patsubst %.cpp, %.o, $(SRCS)))
 
-Task.o : MessageLoop/Task.cpp MessageLoop/Task.h
-	@g++ -Wall -g -c -fPIC -std=c++17 -I$(Commonlib) MessageLoop/Task.cpp -o Task.o
-MessageLoop.o :  MessageLoop/MessageLoop.cpp MessageLoop/MessageLoop.h MessageLoop/Private/BlockingQueue.h \
-	MessageLoop/Task.h Pattern/CSingleton.h Thread/Mutex.h Noncopyable.h CommonGlobal.h 
-	@g++ -Wall -g -c -fPIC -std=c++17 -I$(Commonlib) MessageLoop/MessageLoop.cpp
-TimerMessageLoop.o : Thread/Private/TimerMessageLoop.cpp Thread/Private/TimerMessageLoop.h \
- 	MessageLoop/Private/TimerQueue.h MessageLoop/Task.h Thread/Mutex.h CommonGlobal.h Noncopyable.h
-	@g++ -Wall -g -c -fPIC -std=c++17  -I$(Commonlib) Thread/Private/TimerMessageLoop.cpp
-Thread.o : Thread/Thread.cpp Thread/Thread.h Thread/Mutex.h CommonGlobal.h
-	@g++ -Wall -g -c -fPIC -std=c++17  -I$(Commonlib) Thread/Thread.cpp
-ThreadPool.o : Thread/ThreadPool.cpp Thread/ThreadPool.h MessageLoop/Task.h Thread/Private/ThreadGroup.h \
-	MessageLoop/Private/BlockingQueue.h Thread/Private/TimerMessageLoop.h CommonGlobal.h Pattern/CSingleton.h
-	@g++ -Wall -g -c -fPIC -std=c++17  -I$(Commonlib) Thread/ThreadPool.cpp
-Log.o : Log/Log.cpp Log/Log.h
-	@g++ -Wall -g -c -fPIC -std=c++17 -I$(Commonlib) -I/usr/local/log4cxx/include Log/Log.cpp
+#创建一个object文件的目录
+MAKE_OBJECT_DIR := $(shell mkdir -p $(OBJ_PATH))
+#命令，参数
+RM = rm -f
+CFLAGS = -Wall
+CXXFLAGS = -Wall -g -c -fPIC -std=c++17 -I$(D_PATH) -I /usr/local/log4cxx/include
+LDFLAGS = -shared -fPIC  -L/usr/local/log4cxx/lib
+LIBS = -llog4cxx -lpthread
+
+$(TARGET) : $(OBJS)  
+	@$(CXX) -o $@ $(LDFLAGS) $(LIBS) $^
+
+$(D_OBJ)/%.o : %.cpp $(D_OBJ)/%.cpp.d
+	@$(CXX) -o $@ $(CXXFLAGS) $<
+
+DEPS = $(OBJS:.o=.cpp.d)
+$(DEPS) : $(D_OBJ)/%.cpp.d : %.cpp
+	$(CXX) $< -MM -I$(D_PATH) > $(D_OBJ)/$<.d
+all:
+	@echo $(OBJS)
+	@echo $(DEPS)
+
+-include $(SRC_MK)
+
 .PHONY : clean
 clean : 
-	rm -f Commonlib.so $(objects)
-	#rm -f *.so *.o
+	$(RM) $(TARGET);
+	rm -fr $(D_OBJ)/*

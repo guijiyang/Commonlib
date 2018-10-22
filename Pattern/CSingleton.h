@@ -1,7 +1,7 @@
 #ifndef COMMONLIB_CSINGLETON_H
 #define COMMONLIB_CSINGLETON_H
 
-#include "Commonlib/Thread/Mutex.h"
+#include "Thread/Mutex.h"
 
 #include <memory>
 

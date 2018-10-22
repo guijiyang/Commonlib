@@ -1,8 +1,8 @@
 #ifndef COMMONLIB_THREADPOOL_H
 #define COMMONLIB_THREADPOOL_H
 
-#include "Commonlib/CommonGlobal.h"
-#include "Commonlib/Pattern/CSingleton.h"
+#include "CommonGlobal.h"
+#include "Pattern/CSingleton.h"
 
 
 #include <string>

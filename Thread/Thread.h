@@ -1,7 +1,7 @@
 #ifndef COMMONLIB_THREAD_H
 #define COMMONLIB_THREAD_H
 
-#include "Commonlib/CommonGlobal.h"
+#include "CommonGlobal.h"
 
 namespace Commonlib
 {

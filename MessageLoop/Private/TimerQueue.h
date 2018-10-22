@@ -6,8 +6,8 @@
 #include <condition_variable>
 #include <chrono>
 
-#include "Commonlib/Thread/Mutex.h"
-#include "Commonlib/Noncopyable.h"
+#include "Thread/Mutex.h"
+#include "Noncopyable.h"
 
 namespace Commonlib
 {

@@ -1,8 +1,8 @@
 #include "ThreadPool.h"
-#include "Commonlib/MessageLoop/Task.h"
-#include "Commonlib/Thread/Private/ThreadGroup.h"
-#include "Commonlib/MessageLoop/Private/BlockingQueue.h"
-#include "Commonlib/Thread/Private/TimerMessageLoop.h"
+#include "MessageLoop/Task.h"
+#include "Thread/Private/ThreadGroup.h"
+#include "MessageLoop/Private/BlockingQueue.h"
+#include "Thread/Private/TimerMessageLoop.h"
 
 #include <assert.h>
 #include <thread>

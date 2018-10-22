@@ -1,7 +1,7 @@
 #include "MessageLoop.h"
-#include "Commonlib/MessageLoop/Private/BlockingQueue.h"
-#include "Commonlib/MessageLoop/Task.h"
-#include "Commonlib/Thread/Mutex.h"
+#include "MessageLoop/Private/BlockingQueue.h"
+#include "MessageLoop/Task.h"
+#include "Thread/Mutex.h"
 
 #include <thread>
 

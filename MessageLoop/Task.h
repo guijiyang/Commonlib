@@ -1,7 +1,7 @@
 #ifndef COMMONLIB_CTASK_H
 #define COMMONLIB_CTASK_H
 
-#include "Commonlib/CommonGlobal.h"
+#include "CommonGlobal.h"
 #include <functional>
 
 namespace Commonlib

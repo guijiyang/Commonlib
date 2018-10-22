@@ -1,7 +1,7 @@
 #include "TimerMessageLoop.h"
-#include "Commonlib/MessageLoop/Private/TimerQueue.h"
-#include "Commonlib/MessageLoop/Task.h"
-#include "Commonlib/Thread/Mutex.h"
+#include "MessageLoop/Private/TimerQueue.h"
+#include "MessageLoop/Task.h"
+#include "Thread/Mutex.h"
 #include <thread>
 
 namespace Commonlib {

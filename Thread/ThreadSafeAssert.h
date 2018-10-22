@@ -1,7 +1,7 @@
 #ifndef COMMONLIB_THREADSAFEASSERT_H
 #define COMMONLIB_THREADSAFEASSERT_H
 
-#include "Commonlib/CommonGlobal.h"
+#include "CommonGlobal.h"
 
 namespace Commonlib
 {

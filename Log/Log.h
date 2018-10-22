@@ -1,8 +1,8 @@
 #ifndef COMMONLIB_LOG_H
 #define COMMONLIB_LOG_H
 
-#include "Commonlib/CommonGlobal.h"
-#include "Commonlib/Pattern/CSingleton.h"
+#include "CommonGlobal.h"
+#include "Pattern/CSingleton.h"
 
 #include <log4cxx/logger.h>
 namespace Commonlib

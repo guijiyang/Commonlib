@@ -1,7 +1,7 @@
 #ifndef COMMONLIB_THREADGROUP_H
 #define COMMONLIB_THREADGROUP_H
 
-#include "Commonlib/Thread/Mutex.h"
+#include "Thread/Mutex.h"
 
 #include <thread>
 #include <list>
