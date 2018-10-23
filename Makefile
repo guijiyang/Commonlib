@@ -2,10 +2,12 @@
 CC = /usr/bin/gcc
 CXX = /usr/bin/g++
 
-#目标
-TARGET = Commonlib.so
 #路径变量
 #项目路径
+D_BIN = bin
+MAKE_BIN_DIR := $(shell mkdir -p $(D_BIN))
+#目标
+TARGET = $(D_BIN)/Commonlib.so
 D_PATH = ./
 #对象路径，放置生成的.o文件
 D_OBJ = obj
@@ -41,4 +43,4 @@ all:
 .PHONY : clean
 clean : 
 	$(RM) $(TARGET);
-	rm -fr $(D_OBJ)/*
+	rm -fr $(D_OBJ)/* $(D_BIN)/*
