@@ -3,10 +3,10 @@ CC = /usr/bin/gcc
 CXX = /usr/bin/g++
 
 #项目路径
-D_BIN = bin
+D_LIB = lib
 
 #编译生成目标
-TARGET = $(D_BIN)/Commonlib.so
+TARGET = $(D_LIB)/libCommonlib.so
 D_PATH = ./
 #对象路径，放置生成的.o文件
 D_OBJ = obj
@@ -23,7 +23,7 @@ HEADERS =  $(subst :, , $(HEADER_PATH))
 HEADERS_INSTALL_PATH = $(addprefix $(INSTALL_DIR)/include/, $(HEADERS))
 SHAREDLIB_INSTALL_PATH = $(INSTALL_DIR)/lib
 #创建一个object文件的目录和bin目录
-MAKE_BIN_DIR := $(shell mkdir -p $(D_BIN))
+MAKE_BIN_DIR := $(shell mkdir -p $(D_LIB))
 MAKE_OBJECT_DIR := $(shell mkdir -p $(OBJ_PATH))
 # all:
 # 	@echo $(HEADERS_INSTALL_PATH)
@@ -32,7 +32,7 @@ MAKE_OBJECT_DIR := $(shell mkdir -p $(OBJ_PATH))
 # RM = rm -f
 CFLAGS = -Wall
 CXXFLAGS = -Wall -g -c -fPIC -std=c++17 -I$(D_PATH) -I /usr/local/log4cxx/include
-LDFLAGS = -shared -fPIC  -L/usr/local/log4cxx/lib
+LDFLAGS = -shared -L/usr/local/log4cxx/lib
 LIBS = -llog4cxx -lpthread
 
 $(TARGET) : $(OBJS)  
@@ -48,7 +48,7 @@ $(DEPS) : $(D_OBJ)/%.cpp.d : %.cpp
 .PHONY : clean install
 clean : 
 	$(RM) $(TARGET);
-	rm -fr $(D_OBJ) $(D_BIN)
+	rm -fr $(D_OBJ) $(D_LIB)
 
 install:
 	@ sudo mkdir -p $(INSTALL_DIR) $(HEADERS_INSTALL_PATH) $(SHAREDLIB_INSTALL_PATH); \

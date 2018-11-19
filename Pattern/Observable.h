@@ -9,7 +9,7 @@
 namespace Commonlib
 {
     template<class CObserver>
-    class CObservable
+    class COMMON_EXPORT CObservable
     {
         typedef typename std::list<CObserver*>::iterator CObserverIterator;
     public:

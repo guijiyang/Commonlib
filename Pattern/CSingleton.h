@@ -2,14 +2,17 @@
 #define COMMONLIB_CSINGLETON_H
 
 #include "Thread/Mutex.h"
-
+#include "CommonGlobal.h"
 #include <memory>
-
-namespace Commonlib {
+#include <functional>
+namespace Commonlib
+{
 /**
  * 单件类
  **/
-template <class T> class CSingleton {
+template <class T>
+class COMMON_EXPORT CSingleton
+{
 public:
   //获取单件
   static T &GetInstance();
@@ -31,14 +34,21 @@ private:
 };
 
 //获取单件
-template <class T> inline T &CSingleton<T>::GetInstance() {
-  static std::unique_ptr<T> s_ptrInstance;
+template <class T>
+inline T &CSingleton<T>::GetInstance()
+{
+  static std::unique_ptr<T, std::function<void (T*)>> s_ptrInstance;
   static CMutex m_mutexInstance;
 
-  if (NULL == s_ptrInstance.get()) {
+  if (NULL == s_ptrInstance.get())
+  {
     CMutexLock lock(m_mutexInstance);
-    if (NULL == s_ptrInstance.get()) {
-      s_ptrInstance = std::unique_ptr<T>(new T);
+    if (NULL == s_ptrInstance.get())
+    {
+      s_ptrInstance = std::unique_ptr<T, std::function<void (T*)>>(new T,[](T* ptr)
+      {
+        delete ptr;
+      });
     }
   }
 

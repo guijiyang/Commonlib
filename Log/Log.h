@@ -43,22 +43,22 @@ class COMMON_EXPORT CLog : public CSingleton<CLog>
     CLog();
     ~CLog();
 
-    public:
+  public:
     //调试
-    void Debug(const std::string& strLogName, const std::string& strMessage, 
-        const log4cxx::spi::LocationInfo& logInfo);
+    void Debug(const std::string &strLogName, const std::string &strMessage,
+               const log4cxx::spi::LocationInfo &logInfo);
 
     //提示
-    void Info(const std::string& strLogName, const std::string& strMessage,
-        const log4cxx::spi::LocationInfo& logInfo);
+    void Info(const std::string &strLogName, const std::string &strMessage,
+              const log4cxx::spi::LocationInfo &logInfo);
 
     //警告
-    void Warn(const std::string& strLogName, const std::string& strMessage,
-        const log4cxx::spi::LocationInfo& logInfo);
-    
+    void Warn(const std::string &strLogName, const std::string &strMessage,
+              const log4cxx::spi::LocationInfo &logInfo);
+
     //错误
-    void Error(const std::string& strLogName, const std::string& strMessage,
-        const log4cxx::spi::LocationInfo& logInfo);
+    void Error(const std::string &strLogName, const std::string &strMessage,
+               const log4cxx::spi::LocationInfo &logInfo);
 };
 
 } // namespace Commonlib
