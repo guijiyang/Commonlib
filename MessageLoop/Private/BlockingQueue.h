@@ -7,22 +7,29 @@
 #include "Noncopyable.h"
 #include "Thread/Mutex.h"
 
-namespace Commonlib {
-template <class T> class CBlockingQueue : private CNoncopyable {
+namespace Commonlib
+{
+template <class T>
+class CBlockingQueue : private CNoncopyable
+{
 public:
-  void AddToQueue(const T &x) {
+  void AddToQueue(const T &x)
+  {
     CMutexLock lock(m_mutexQueue);
     m_deque.push_back(x);
     m_condition.notify_one();
   }
 
-  T TakeFromQueue() {
+  T TakeFromQueue()
+  {
     CMutexLock lock(m_mutexQueue);
-    if (m_deque.empty()) {
+    if (m_deque.empty())
+    {
       m_condition.wait(lock);
     }
 
-    if (m_deque.empty()) {
+    if (m_deque.empty())
+    {
       return NULL;
     }
 
@@ -31,9 +38,15 @@ public:
     return front;
   }
 
-  bool IsEmpty() const {
+  bool IsEmpty() const
+  {
     CMutexLock lock(m_mutexQueue);
     return m_deque.empty();
+  }
+
+  int GetQueueSize() const
+  {
+    return m_deque.size();
   }
 
   void NotifyAll() { m_condition.notify_all(); }

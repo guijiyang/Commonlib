@@ -11,28 +11,28 @@ namespace Commonlib
 //调试信息
 #define LOG_DEBUG(strLogName, strMessage, ...)                               \
     {                                                                        \
-        CLog::GetInstance().Debug(strLogName, strMessage, LOG4CXX_LOCATION); \
+        CLog::GetInstance(nullptr).Debug(strLogName, strMessage, LOG4CXX_LOCATION); \
     }
 
 //提示
 #define LOG_INFO(strLogName, strMessage, ...)                         \
     {                                                                 \
     CLog:                                                             \
-        GetInstance().Info(strLogName, strMessage, LOG4CXX_LOCATION); \
+        GetInstance(nullptr).Info(strLogName, strMessage, LOG4CXX_LOCATION); \
     }
 
 //警告
 #define LOG_WARN(strLogName, strMessage, ...)                         \
     {                                                                 \
     CLog:                                                             \
-        GetInstance().Warn(strLogName, strMessage, LOG4CXX_LOCATION); \
+        GetInstance(nullptr).Warn(strLogName, strMessage, LOG4CXX_LOCATION); \
     }
 
 //错误
 #define LOG_ERROR(strLogName, strMessage, ...)                         \
     {                                                                  \
     CLog:                                                              \
-        GetInstance().Error(strLogName, strMessage, LOG4CXX_LOCATION); \
+        GetInstance(nullptr).Error(strLogName, strMessage, LOG4CXX_LOCATION); \
     }
 
 class COMMON_EXPORT CLog : public CSingleton<CLog>
